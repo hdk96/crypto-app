@@ -1,0 +1,34 @@
+<div class="container">
+	<h2>Bonjour et bienvenue sur votre scrappeur de crypto favori</h2>
+	<p>Vous le savez déjà mais je vous le rappel la recherche peux être très longue</p>
+	<p>mais askip la patience finit toujours par payer</p>
+	<%= form_for :home, url: {action: "search"} do %>
+
+		<div class="validation form-group"> 
+	  		<input type="text" name="word" value="<%= @home %>" />
+	  	</div>
+
+		<div class="validation form-group"> 
+	  		<input type="submit" value="Recherche" class="btn btn-info" />
+	    </div>
+	<%end%>
+
+	<div>
+	<% @crypto.each do |coin| %>
+
+		<% @words.each do |crypto_search| %>
+			<% if crypto_search.word == coin.name%>
+				<h3>Et voilà le travail</h3>
+				<h2>Nom: <%= coin.name %></h2>
+				<h2> Prix: <%= coin.price %></h2>
+			    <p>D'après le site 
+			<a href="https://coinmarketcap.com/all/views/all/">coinmarketcap.com</a></p>
+			<% end %>
+
+		<% end %>
+	<% end %>
+	</div>
+
+
+</div>
+
